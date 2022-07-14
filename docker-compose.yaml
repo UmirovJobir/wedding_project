@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
     volumes:
-      - .:/app
+      - ./postgres-data:/var/lib/postgresql/data
   
   
   app:
