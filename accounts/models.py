@@ -39,7 +39,7 @@ class UserModel(AbstractUser):
     )
 
     number = models.CharField(max_length=9)
-    city = models.CharField(max_length=20, choices=CITY)
+    city = models.CharField(max_length=50, choices=CITY)
     event_date = models.DateField(blank=True, null=True)
 
     class Meta:
