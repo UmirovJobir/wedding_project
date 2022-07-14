@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  postgres_db:
+  wedding_db:
     image: postgres:10
-    container_name: postgres_db
+    container_name: wedding_db
     environment:
       - POSTGRES_DB=wedding_db
       - POSTGRES_USER=postgres
@@ -14,7 +14,7 @@ services:
   
   app:
     build: .
-    container_name: wedding_app
+    container_name: wedding_db
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - postgres_db
