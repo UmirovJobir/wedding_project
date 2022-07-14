@@ -1,21 +1,19 @@
-FROM python:3.8
+FROM python:3
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /code
-COPY requirements.txt ./code
-COPY . .
-
-# RUN  docker rm $(docker ps -a -q)
-# RUN  docker rmi $(docker images -q)
+WORKDIR /app
+COPY requirements.txt ./app
+COPY . . 
 
 RUN apt-get update \
     && apt-get install -yyq netcat
 
-RUN pip install --upgrade pip
+RUN chmod +x entrypoint.sh
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
+
 COPY entrypoint.sh .
-ENTRYPOINT [ "sh", "./entrypoint.sh" ]
+ENTRYPOINT ["sh", "./entrypoint.sh"]

@@ -1,9 +1,10 @@
+
 #!/bin/bash
 
 python3 manage.py makemigrations
 python3 manage.py migrate
 
-if [ "$POSTGRES_DB" = "chat" ]
+if [ "$POSTGRES_DB" = "wedding_db" ]
 then
     echo "Waiting for postgres..."
 
@@ -16,5 +17,3 @@ fi
 
 
 exec "$@"
-
-
