@@ -3,7 +3,7 @@ from django.contrib.auth.models import  AbstractUser
 
 
 class UserModel(AbstractUser):
-    number = models.CharField(max_length=9, unique=True)
+    number = models.CharField(max_length=9)
     city = models.CharField(max_length=20)
     event_date = models.DateField(blank=True, null=True)
 

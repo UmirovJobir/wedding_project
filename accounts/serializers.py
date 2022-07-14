@@ -27,7 +27,7 @@ class GreaterThanValidator:
 class UserSerializer(serializers.ModelSerializer):  
     class Meta:
         model = UserModel
-        fields = ['username', 'number', 'password', "city", 'event_date']
+        fields = ['username', 'number', "city", 'event_date']
     
     username = serializers.CharField(validators=[LessThanValidator(3), GreaterThanValidator(24)])
 
