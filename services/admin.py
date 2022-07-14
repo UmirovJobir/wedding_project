@@ -6,9 +6,12 @@ from services.models.system_info import SystemInfoModel, SystemInfoFileModel
 from services.models.service import ServiceModel, Category
 from services.models.restoran import MenuItemModel, MenuModel, RestoranModel, BookedDate, EvantModel
 from services.models.order import Order
+from rest_framework.authtoken.models import TokenProxy
+
 
 import nested_admin
 
+admin.site.unregister(TokenProxy)
 admin.site.unregister(Group)
 
 class SystemInfoFileInline(nested_admin.NestedStackedInline):
