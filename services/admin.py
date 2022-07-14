@@ -1,6 +1,7 @@
-from ast import Or
-from pyexpat import model
+
 from django.contrib import admin
+from django.contrib.auth.models import Group
+
 from services.models.system_info import SystemInfoModel, SystemInfoFileModel
 from services.models.service import ServiceModel, Category
 from services.models.restoran import MenuItemModel, MenuModel, RestoranModel, BookedDate, EvantModel
@@ -8,6 +9,7 @@ from services.models.order import Order
 
 import nested_admin
 
+admin.site.unregister(Group)
 
 class SystemInfoFileInline(nested_admin.NestedStackedInline):
     model = SystemInfoFileModel
