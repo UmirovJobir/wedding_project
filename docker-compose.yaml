@@ -3,7 +3,7 @@ version: "3.8"
 services:
   wedding_db:
     image: postgres:10
-    container_name: wedding_db
+    container_name: wedding_project_db
     environment:
       - POSTGRES_DB=wedding_project_db
       - POSTGRES_USER=postgres
