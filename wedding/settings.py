@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY') #'django-insecure-&%ezqxc(hg+1ik%4q6w8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["172.104.143.233"]
 
 
 AUTH_USER_MODEL = 'accounts.UserModel'
@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'accounts',
 
     'rest_framework',
-    'rest_framework_simplejwt',
-    'rest_framework_simplejwt.token_blacklist',
+ 
     'nested_admin',
     'drf_yasg',
 ]
