@@ -12,6 +12,9 @@ class EvantModel(models.Model):
  
     def __str__(self):
         return self.name
+    
+    class Meta:
+         verbose_name_plural = "Мероприятие"
 
 class RestoranModel(models.Model):
     restoran = models.CharField(max_length=30)
@@ -26,6 +29,9 @@ class RestoranModel(models.Model):
     
     def __str__(self):
         return self.restoran
+    
+    class Meta:
+         verbose_name_plural = "Ресторан"
 
 
 class MenuModel(models.Model):
@@ -38,6 +44,9 @@ class MenuModel(models.Model):
 
     def __str__(self):
         return self.type
+    
+    class Meta:
+         verbose_name_plural = "Меню"
 
 
 class MenuItemModel(models.Model):
@@ -50,6 +59,9 @@ class MenuItemModel(models.Model):
 
     def __str__(self):
         return self.itam_name
+    
+    class Meta:
+         verbose_name_plural = "Пункты меню"
 
 class BookedDate(models.Model):
     date = models.DateField()
@@ -60,3 +72,4 @@ class BookedDate(models.Model):
 
     class Meta: 
         unique_together = ('date', 'booked_dates')
+        verbose_name_plural = "Забронированные даты"

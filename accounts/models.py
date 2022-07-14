@@ -47,6 +47,9 @@ class UserModel(AbstractUser):
     
     def save(self, *args, **kwargs):
         super(UserModel, self).save(*args, **kwargs)
+    
+    class Meta:
+         verbose_name_plural = "Пользователи"
 
 
  
