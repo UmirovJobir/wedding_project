@@ -17,8 +17,41 @@ class EvantModel(models.Model):
          verbose_name_plural = "Мероприятие"
 
 class RestoranModel(models.Model):
+
+    TOSHKENT = "Toshkent"
+    TOSHKENT_V = "Toshkent_v"
+    ANDIJON = "Andijon "
+    BUXORO = "Buxoro"
+    FARGONA = "Farg'ona"
+    SIRDARYO = "Sirdaryo"
+    JIZZAX = "Jizzax"
+    NAMANGAN = "Namangan"
+    NAVOIY = "Navoiy"
+    QORAQAL = "Qoraqalpog'iston Respublikasi"
+    SAMARQAND = "Samarqand"
+    SURXONDARYO = "Surxondaryo"
+    XORAZM = "Xorazm"
+    QASHQADARYO = "Qashqadaryo"
+
+    CITY = (
+        (TOSHKENT, "Toshkent"),
+        (TOSHKENT_V, "Toshkent_v"),
+        (ANDIJON, "Andijon"),
+        (BUXORO, "Buxoro"),
+        (FARGONA, "Farg'ona"),
+        (SIRDARYO, "Sirdaryo"),
+        (JIZZAX, "Jizzax"),
+        (NAMANGAN, "Namangan"),
+        (NAVOIY, "Navoiy"),
+        (QORAQAL, "Qoraqalpog'iston Respublikasi"),
+        (SAMARQAND, "Samarqand"),
+        (SURXONDARYO, "Surxondaryo"),
+        (XORAZM, "Xorazm"),
+        (QASHQADARYO, "Qashqadaryo"),
+    )
+
     restoran = models.CharField(max_length=30)
-    city = models.CharField(max_length=30)
+    city = models.CharField(max_length=30, choices=CITY)
     address = models.CharField(max_length=50)
     image = models.ImageField(upload_to='restoran/', blank=True, null=True)
     file = models.FileField(upload_to='restoran/', blank=True, null=True)
