@@ -50,6 +50,8 @@ class UserModel(AbstractUser):
     city = models.CharField(max_length=50, choices=CITY)
     event_date = models.DateField(blank=True, null=True)
 
+    USERNAME_FIELD = 'number'
+
     class Meta:
         ordering = ['-date_joined']
         verbose_name_plural = "Пользователи"
