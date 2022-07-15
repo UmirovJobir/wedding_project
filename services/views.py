@@ -46,7 +46,6 @@ class RestoranView(generics.ListAPIView):
             city = self.request.user.city
             date = self.request.user.event_date
             events_id = self.request.query_params.get("id")
-            print(events_id)
             restorans = RestoranModel.objects.filter(event_id=events_id).all()
             booked_dates = BookedDate.objects.filter(date=date).values_list('booked_dates_id', flat=True)
             if booked_dates.exists():
