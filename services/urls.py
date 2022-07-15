@@ -1,18 +1,13 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from services.views import SystemViewset, EvantViewset, ServiceViewset, MenuViewset, MenuItemsViewset, RestoranView, OrderView
-
-
-router = DefaultRouter()
-router.register('system', SystemViewset),
-router.register('menuitems', MenuItemsViewset),
-router.register('menus', MenuViewset),
-router.register('events', EvantViewset)
-router.register('services', ServiceViewset)
+from django.urls import path
+from services.views import SystemView, EvantView, ServiceView, MenuView, MenuItemsView, RestoranView, OrderView
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('info/', SystemView.as_view()),
+    path('events', EvantView.as_view()),
     path('restorans/', RestoranView.as_view()),
-    path('order/', OrderView.as_view())
+    path('menus', MenuView.as_view()),
+    path('menuitems', MenuItemsView.as_view()),
+    path('order/', OrderView.as_view()),
+    path('services', ServiceView.as_view()),
 ]
