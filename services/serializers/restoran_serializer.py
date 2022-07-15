@@ -11,15 +11,15 @@ class BookedDateSerializer(serializers.ModelSerializer):
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItemModel
-        fields = ('id', 'itam_name', 'image', 'menu_id')
+        fields = ('id', 'menu_id', 'itam_name', 'image', 'menu_id')
 
 class MenuSerializer(serializers.ModelSerializer):
-    menuitems = MenuItemSerializer(many=True)
-    # menuitems = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    # menuitems = MenuItemSerializer(many=True)
+    menuitems = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     
     class Meta:
         model = MenuModel
-        fields = ('id', 'type', 'price', 'menuitems')
+        fields = ('id', 'restoran_id', 'type', 'price', 'menuitems')
 
     def create(self, validated_data):
         menuitems_data = validated_data.pop('menuitems')
@@ -36,7 +36,7 @@ class RestoranSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RestoranModel
-        fields = ('id', 'restoran', 'city', 'address', 'booked_dates', 'menus')
+        fields = ('id', 'event_id', 'restoran', 'city', 'address', 'booked_dates', 'menus')
 
     def create(self, validated_data):
         menus_data = validated_data.pop('menus')
