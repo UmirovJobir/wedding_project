@@ -1,8 +1,7 @@
 
 #!/bin/bash
 
-python3 manage.py makemigrations
-python3 manage.py migrate
+
 
 if [ "$POSTGRES_DB" = "wedding_project_db" ]
 then
@@ -15,5 +14,7 @@ then
     echo "PostgreSQL started"
 fi
 
+python3 manage.py makemigrations
+python3 manage.py migrate
 
 exec "$@"
