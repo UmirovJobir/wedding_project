@@ -69,8 +69,8 @@ class RestoranModel(models.Model):
 
 
 class TableModel(models.Model):
-    name = models.CharField(max_length=50)
-    type = models.CharField(max_length=50)
+    table_name = models.CharField(max_length=50)
+    type_name = models.CharField(max_length=50)
     price = models.PositiveIntegerField(default=0)
     restoran_id = models.ForeignKey(RestoranModel, related_name='tables', on_delete=models.CASCADE)
 

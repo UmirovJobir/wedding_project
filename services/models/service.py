@@ -12,8 +12,8 @@ class Category(models.Model):
          verbose_name_plural = "Категория услуг"
 
 class ServiceModel(models.Model):
-    event_type = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
-    category_type = models.ForeignKey(Category, on_delete=models.CASCADE)
+    event_type_id = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
+    category_type_id = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
     price = models.PositiveIntegerField(default=0)
@@ -29,7 +29,7 @@ class ServiceModel(models.Model):
 
 
 class MenuModel(models.Model):
-    event_type = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
+    event_type_id = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
     price = models.PositiveIntegerField(default=0)

@@ -34,7 +34,7 @@ class SystemInfoModel(SingletonModel):
         verbose_name_plural = "Информация o сайте"
 
 class SystemInfoFileModel(models.Model):
-    systeminfo = models.ForeignKey(SystemInfoModel, on_delete=models.CASCADE)
+    systeminfo_id = models.ForeignKey(SystemInfoModel, on_delete=models.CASCADE)
     file = models.FileField(upload_to='systeminfo/', blank=True)
 
     def __str__(self):

@@ -13,13 +13,13 @@ class Order(models.Model):
         (COMPLETED, "Completed"),
         (CANCELED, "Canceled")
     )
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     day = models.DateField(blank=True)
-    restoran = models.ForeignKey(RestoranModel, on_delete=models.CASCADE)
-    table = models.ForeignKey(TableModel, on_delete=models.CASCADE)
+    restoran_id = models.ForeignKey(RestoranModel, on_delete=models.CASCADE)
+    table_id = models.ForeignKey(TableModel, on_delete=models.CASCADE)
     # gests_amount = models.PositiveIntegerField(default=1)
-    menu = models.ManyToManyField(MenuModel, blank=True)
-    service = models.ManyToManyField(ServiceModel, blank=True)
+    menu_id = models.ManyToManyField(MenuModel, blank=True)
+    service_id = models.ManyToManyField(ServiceModel, blank=True)
     status = models.CharField(max_length=15, choices=STATUS, blank=True, default=IN_PROCESS)
     total_price = models.PositiveIntegerField(default=0, blank=True, null=True)
 
