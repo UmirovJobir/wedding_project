@@ -5,7 +5,7 @@ services:
     image: postgres:10
     container_name: wedding_data
     environment:
-      - POSTGRES_DB=wedding_db
+      - POSTGRES_DB=wedding_project_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
     volumes:
