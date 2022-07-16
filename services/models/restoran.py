@@ -72,7 +72,6 @@ class TableModel(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
     price = models.PositiveIntegerField(default=0)
-    restoran_id = models.ForeignKey(RestoranModel, related_name='tables', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         super(TableModel, self).save(*args, **kwargs)
