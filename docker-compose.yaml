@@ -12,7 +12,6 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
   
   
-  
   app:
     build: .
     container_name: wedding_app
