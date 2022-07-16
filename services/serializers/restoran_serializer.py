@@ -11,7 +11,7 @@ class BookedDateSerializer(serializers.ModelSerializer):
 class TableSerializer(serializers.ModelSerializer):
     class Meta:
         model = TableModel
-        fields = ('id', 'type', 'price', 'tables')
+        fields = ('id', 'type', 'price', 'restoran_id',)
 
 class RestoranSerializer(serializers.ModelSerializer):
     tables = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
