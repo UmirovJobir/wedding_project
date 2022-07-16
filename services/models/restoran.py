@@ -74,6 +74,9 @@ class TableModel(models.Model):
     price = models.PositiveIntegerField(default=0)
     restoran_id = models.ForeignKey(RestoranModel, related_name='tables', on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        super(TableModel, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.type
 
