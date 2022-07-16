@@ -26,7 +26,7 @@ class Order(models.Model):
         return str(self.user)
 
     class Meta:
-         verbose_name_plural = "Заказ"
+         verbose_name_plural = "Заказы"
 
     @property
     def menu_price(self):

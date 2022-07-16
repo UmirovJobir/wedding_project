@@ -29,6 +29,9 @@ class SystemInfoModel(SingletonModel):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = "Информация o сайте"
 
 class SystemInfoFileModel(models.Model):
     systeminfo = models.ForeignKey(SystemInfoModel, on_delete=models.CASCADE)
