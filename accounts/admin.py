@@ -8,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ['username', 'number']
     search_fields = ['username', 'number']
 
-@admin.register(UserModel)
+@admin.register(BlacklistUser)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username', 'number', 'reason']
     list_filter = ['username', 'number']
