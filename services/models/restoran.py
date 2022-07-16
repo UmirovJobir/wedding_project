@@ -56,7 +56,7 @@ class RestoranModel(models.Model):
     address = models.CharField(max_length=50)
     image = models.ImageField(upload_to='restoran/', blank=True, null=True)
     file = models.FileField(upload_to='restoran/', blank=True, null=True)
-    event_id = models.ManyToManyField(EvantModel, related_name='restorans_id')
+    event_id = models.ManyToManyField(EvantModel, related_name='restoran_id')
 
     def save(self, *args, **kwargs):
         super(RestoranModel, self).save(*args, **kwargs)
