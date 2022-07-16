@@ -74,16 +74,24 @@ class TableModel(models.Model):
     price = models.PositiveIntegerField(default=0)
     restoran_id = models.ForeignKey(RestoranModel, related_name='tables', on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        super(TableModel, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.type
-
+    
+    
 
 class BookedDate(models.Model):
     date = models.DateField()
-    restoran_id = models.ForeignKey(RestoranModel, related_name='restoran_id', on_delete=models.CASCADE)
+    restoran_id = models.ForeignKey(RestoranModel, related_name='booked_dates', on_delete=models.CASCADE)
 
     def __str__(self):
         return str(f'{self.restoran_id}: {self.date}')
+    
+    def save(self, *args, **kwargs):
+        super(BookedDate, self).save(*args, **kwargs)
+    
 
     class Meta: 
         unique_together = ('date', 'restoran_id')

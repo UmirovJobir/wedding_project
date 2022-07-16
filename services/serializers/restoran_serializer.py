@@ -15,11 +15,11 @@ class TableSerializer(serializers.ModelSerializer):
 
 class RestoranSerializer(serializers.ModelSerializer):
     tables = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    restoran_id = BookedDateSerializer(many=True)
+    booked_dates = BookedDateSerializer(many=True)
 
     class Meta:
         model = RestoranModel
-        fields = ('id', 'event_id', 'restoran', 'city', 'address', 'restoran_id', 'tables')
+        fields = ('id', 'event_id', 'restoran', 'city', 'address', 'booked_dates', 'tables')
 
 
 class EvantSerializer(serializers.ModelSerializer):
