@@ -37,4 +37,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('services/', include('services.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-docs'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-docs')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
