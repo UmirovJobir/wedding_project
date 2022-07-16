@@ -1,5 +1,6 @@
 
 from rest_framework.response import Response
+from django.http import HttpResponseNotAllowed
 
 from services.models import SystemInfoModel, RestoranModel, BookedDate, EvantModel, ServiceModel, MenuItemModel, MenuModel, Order
 
@@ -71,25 +72,35 @@ class OrderView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        serializer = OrderPostSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.validated_data['user'] = self.request.user
+        blacklist = BlacklistUser.objects.all()
+        blacklist = blacklist.values("user_id_id")
+        user = self.request.user
+        list = []
+        for black in blacklist:
+            list.append(black['user_id_id'])
+        if user.id in list: 
+            return HttpResponseNotAllowed("not allowed")
+        else:
+            serializer = OrderPostSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.validated_data['user'] = self.request.user
 
-        total_price = 0
-        menu = MenuModel.objects.get(pk=request.data.get("menu"))
-        gests_amount = request.data.get("gests_amount")
-        services = ServiceModel.objects.filter(pk__in=request.data.get('service')).all()
-        for service in services:
-            total_price += service.price
-        total_price += menu.price * gests_amount
-        serializer.validated_data['day'] = self.request.user.event_date
+            total_price = 0
+            menu = MenuModel.objects.get(pk=request.data.get("menu"))
+            gests_amount = request.data.get("gests_amount")
+            services = ServiceModel.objects.filter(pk__in=request.data.get('service')).all()
+            for service in services:
+                total_price += service.price
+            total_price += menu.price * gests_amount
+            serializer.validated_data['day'] = self.request.user.event_date
 
-        serializer.save(total_price=total_price, )
+            serializer.save(total_price=total_price, )
 
-        restoran_id = request.data.get('restoran')
-        restoran = RestoranModel.objects.get(id=restoran_id)
-        date_user = self.request.user.event_date 
-        booked_dates = BookedDate.objects.create(date=date_user, booked_dates=restoran)
-        unique_together = ('date', 'booked_dates')
+            restoran_id = request.data.get('restoran')
+            restoran = RestoranModel.objects.get(id=restoran_id)
+            date_user = self.request.user.event_date 
 
-        return Response(data=serializer.data)
+            BookedDate.objects.create(date=date_user, booked_dates=restoran)
+            
+
+            return Response(data=serializer.data)

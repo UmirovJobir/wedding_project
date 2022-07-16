@@ -55,6 +55,17 @@ class UserModel(AbstractUser):
     class Meta:
         ordering = ['-date_joined']
         verbose_name_plural = "Пользователи"
+
+
+class BlacklistUser(models.Model):
+    reason = models.CharField(max_length=100, blank=True, null=True)
+    user_id = models.OneToOneField(UserModel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user_id
+    
+    class Meta:
+        verbose_name_plural = "Черный список пользователей"
     
 
 
