@@ -5,8 +5,12 @@ from services.models.system_info import SystemInfoModel, SystemInfoFileModel
 from services.models.service import ServiceModel, Category, MenuModel
 from services.models.restoran import TableModel, RestoranModel, BookedDate, EvantModel
 from services.models.order import Order
+from django.contrib.auth.models import Group
 
 import nested_admin
+
+
+admin.site.unregister(Group)
 
 
 class SystemInfoFileInline(nested_admin.NestedStackedInline):
