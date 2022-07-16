@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  wedding_data:
+  wedding_d:
     image: postgres:10
-    container_name: wedding_data
+    container_name: wedding_d
     environment:
       - POSTGRES_DB=wedding_project_db
       - POSTGRES_USER=postgres
@@ -17,14 +17,14 @@ services:
     container_name: wedding_app
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
-      - wedding_data
+      - wedding_d
     ports:
       - "8000:8000"
     env_file:
       - .env
 
 volumes:
-    wedding_data:
+    wedding_d:
     app:
 
 
