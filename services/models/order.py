@@ -17,7 +17,6 @@ class Order(models.Model):
     day = models.DateField(blank=True)
     restoran_id = models.ForeignKey(RestoranModel, on_delete=models.CASCADE)
     table_id = models.ForeignKey(TableModel, on_delete=models.CASCADE)
-    # gests_amount = models.PositiveIntegerField(default=1)
     menu_id = models.ManyToManyField(MenuModel, blank=True)
     service_id = models.ManyToManyField(ServiceModel, blank=True)
     status = models.CharField(max_length=15, choices=STATUS, blank=True, default=IN_PROCESS)
