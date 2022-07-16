@@ -59,6 +59,7 @@ class UserModel(AbstractUser):
 
 class BlacklistUser(models.Model):
     reason = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
     user_id = models.OneToOneField(UserModel, on_delete=models.CASCADE)
 
     def __str__(self):
