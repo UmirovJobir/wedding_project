@@ -2,8 +2,7 @@
 #!/bin/bash
 
 
-
-if [ "$POSTGRES_DB" = "wedding_project_db" ]
+if [ "$POSTGRES_DB" = "wedding_new_db" ]
 then
     echo "Waiting for postgres..."
 
@@ -14,7 +13,7 @@ then
     echo "PostgreSQL started"
 fi
 
+exec "$@"
+
 python3 manage.py makemigrations
 python3 manage.py migrate
-
-exec "$@"
