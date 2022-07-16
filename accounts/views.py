@@ -6,7 +6,7 @@ from .models import UserModel
 from .serializers import UserSerializer
 
 
-class RegisterView(generics.ListCreateAPIView):
+class RegisterView(generics.CreateAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
 
