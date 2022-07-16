@@ -22,7 +22,7 @@ class ServiceModel(models.Model):
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return str(self.category_type)
+        return str(self.category_type_id)
     
     class Meta:
         verbose_name_plural = "Услуги"
@@ -34,3 +34,6 @@ class MenuModel(models.Model):
     type = models.CharField(max_length=30)
     price = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='service/', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "Меню"

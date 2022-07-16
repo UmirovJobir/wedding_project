@@ -80,6 +80,8 @@ class TableModel(models.Model):
     def __str__(self):
         return self.type
 
+class Meta:
+         verbose_name_plural = "Столы"
 
 class BookedDate(models.Model):
     date = models.DateField()
