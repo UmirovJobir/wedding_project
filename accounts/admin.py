@@ -9,7 +9,6 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ['username', 'number']
 
 @admin.register(BlacklistUser)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'number', 'reason']
-    list_filter = ['username', 'number']
-    search_fields = ['username', 'number']
+class BlacklistAdmin(admin.ModelAdmin):
+    list_display = ['user_id', 'reason', 'date']
+    search_fields = ['number']
