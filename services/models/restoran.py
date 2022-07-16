@@ -1,3 +1,4 @@
+from difflib import restore
 from django.db import models
 from accounts.models import UserModel
 
@@ -8,11 +9,11 @@ class EvantModel(models.Model):
     active = models.BooleanField()
 
     def save(self, *args, **kwargs):
-        super(EvantModel, self).save(*args, **kwargs)
+        super(EvantModel, self).save(*args, **kwargs) 
  
     def __str__(self):
         return self.name
-    
+
     class Meta:
          verbose_name_plural = "Мероприятие"
 
@@ -55,54 +56,36 @@ class RestoranModel(models.Model):
     address = models.CharField(max_length=50)
     image = models.ImageField(upload_to='restoran/', blank=True, null=True)
     file = models.FileField(upload_to='restoran/', blank=True, null=True)
-    event_id = models.ManyToManyField(EvantModel, related_name='restorans')
+    event_id = models.ManyToManyField(EvantModel, related_name='restorans_id')
 
     def save(self, *args, **kwargs):
         super(RestoranModel, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.restoran
-    
+
     class Meta:
          verbose_name_plural = "Ресторан"
 
 
-class MenuModel(models.Model):
-    type = models.CharField(max_length=30)
+class TableModel(models.Model):
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
     price = models.PositiveIntegerField(default=0)
-    restoran_id = models.ForeignKey(RestoranModel, related_name='menus', on_delete=models.CASCADE)
-
-    def save(self, *args, **kwargs):
-        super(MenuModel, self).save(*args, **kwargs)
+    restoran_id = models.ForeignKey(RestoranModel, related_name='tables', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.type
-    
-    class Meta:
-         verbose_name_plural = "Меню"
 
-
-class MenuItemModel(models.Model):
-    image = models.ImageField(upload_to='menuitems/', blank=True, null=True)
-    itam_name = models.CharField(max_length=30)
-    menu_id = models.ForeignKey(MenuModel, related_name="menuitems", on_delete=models.CASCADE)
-
-    def save(self, *args, **kwargs):
-        super(MenuItemModel, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.itam_name
-    
-    class Meta:
-         verbose_name_plural = "Пункты меню"
 
 class BookedDate(models.Model):
     date = models.DateField()
-    booked_dates = models.ForeignKey(RestoranModel, related_name="booked_dates", on_delete=models.CASCADE)
+    restoran_id = models.ForeignKey(RestoranModel, related_name='restoran_id', on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(f'{self.booked_dates}: {self.date}')
+        return str(f'{self.restoran_id}: {self.date}')
 
     class Meta: 
-        unique_together = ('date', 'booked_dates')
+        unique_together = ('date', 'restoran_id')
         verbose_name_plural = "Забронированные даты"
+    

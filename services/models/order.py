@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import UserModel
-from services.models import RestoranModel, MenuModel, ServiceModel, ServiceModel
+from services.models import RestoranModel, TableModel, ServiceModel, ServiceModel, MenuModel
 
 
 
@@ -16,8 +16,9 @@ class Order(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     day = models.DateField(blank=True)
     restoran = models.ForeignKey(RestoranModel, on_delete=models.CASCADE)
-    gests_amount = models.PositiveIntegerField(default=1)
-    menu = models.ForeignKey(MenuModel, on_delete=models.CASCADE)
+    table = models.ForeignKey(TableModel, on_delete=models.CASCADE)
+    # gests_amount = models.PositiveIntegerField(default=1)
+    menu = models.ManyToManyField(MenuModel, blank=True)
     service = models.ManyToManyField(ServiceModel, blank=True)
     status = models.CharField(max_length=15, choices=STATUS, blank=True, default=IN_PROCESS)
     total_price = models.PositiveIntegerField(default=0, blank=True, null=True)
@@ -28,23 +29,23 @@ class Order(models.Model):
     class Meta:
          verbose_name_plural = "Заказы"
 
-    @property
-    def menu_price(self):
-        menu_price = self.menu.price
-        return menu_price
+    # @property
+    # def menu_price(self):
+    #     menu_price = self.menu.price
+    #     return menu_price
 
 
-    @property
-    def gests_price_all(self):
-        number = int(self.menu_price) * int(self.gests_amount)
-        return number
+    # @property
+    # def gests_price_all(self):
+    #     number = int(self.menu_price) * int(self.gests_amount)
+    #     return number
         
 
-    @property
-    def service_price(self):
-        total_price = 0
-        for service in self.service.all():
-            total_price += service.price  
-        return total_price
+    # @property
+    # def service_price(self):
+    #     total_price = 0
+    #     for service in self.service.all():
+    #         total_price += service.price  
+    #     return total_price
 
 

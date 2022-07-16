@@ -7,7 +7,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
+    
     class Meta:
          verbose_name_plural = "Категория услуг"
 
@@ -25,4 +25,12 @@ class ServiceModel(models.Model):
         return str(self.category_type)
     
     class Meta:
-         verbose_name_plural = "Услуги"
+        verbose_name_plural = "Услуги"
+
+
+class MenuModel(models.Model):
+    event_type = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=30)
+    price = models.PositiveIntegerField(default=0)
+    image = models.ImageField(upload_to='service/', blank=True, null=True)
