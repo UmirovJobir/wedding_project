@@ -9,7 +9,7 @@ class Category(models.Model):
         return self.name
     
     class Meta:
-         verbose_name_plural = "Категория услуг"
+         verbose_name_plural = "Услуги" # "Категория услуг"
 
 class ServiceModel(models.Model):
     event_type_id = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
@@ -24,8 +24,8 @@ class ServiceModel(models.Model):
     def __str__(self):
         return str(self.category_type_id)
     
-    class Meta:
-        verbose_name_plural = "Услуги"
+    # class Meta:
+    #     verbose_name_plural = "Услуги"
 
 
 class MenuModel(models.Model):

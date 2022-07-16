@@ -21,11 +21,9 @@ admin.site.register(SystemInfoModel, SystemInfoAdmin)
 
 admin.site.register(EvantModel)
 
-admin.site.register(BookedDate)
-
-admin.site.register(TableModel)
-
 admin.site.register(RestoranModel)
+admin.site.register(TableModel)
+admin.site.register(BookedDate)
 
 admin.site.register(MenuModel)
 
