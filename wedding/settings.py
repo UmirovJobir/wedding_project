@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY') #'django-insecure-&%ezqxc(hg+1ik%4q6w8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["172.104.143.233"]
+ALLOWED_HOSTS = ["*"]
 
 
 AUTH_USER_MODEL = 'accounts.UserModel'
