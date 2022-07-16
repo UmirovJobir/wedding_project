@@ -85,7 +85,7 @@ class TableModel(models.Model):
 
 class BookedDate(models.Model):
     date = models.DateField()
-    restoran_id = models.ForeignKey(RestoranModel, related_name='booked', on_delete=models.CASCADE)
+    restoran_id = models.ForeignKey(RestoranModel, related_name='booked_dates', on_delete=models.CASCADE)
 
     def __str__(self):
         return str(f'{self.restoran_id}: {self.date}')

@@ -23,7 +23,7 @@ class RestoranSerializer(serializers.ModelSerializer):
 
 
 class EvantSerializer(serializers.ModelSerializer):
-    # restoran_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    restoran_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = EvantModel
