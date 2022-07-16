@@ -21,7 +21,8 @@ jobs:
           cd wedding_project
           git pull
           docker-compose down
-          docker-compose build
-          docker-compose up
+          docker compose up -d --build
+          # docker-compose build
+          # docker-compose up
       
       
