@@ -74,6 +74,7 @@ class OrderView(generics.ListAPIView):
     queryset = Order.objects.all()
     permission_classes = [permissions.IsAuthenticated]
 
+
     def post(self, request):
         blacklist = BlacklistUser.objects.all()
         blacklist = blacklist.values("user_id_id")
