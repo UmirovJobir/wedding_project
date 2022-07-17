@@ -35,5 +35,8 @@ class MenuModel(models.Model):
     price = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='service/', blank=True, null=True)
 
+    def __str__(self):
+        return str(self.name)
+
     class Meta:
         verbose_name_plural = "Меню"
