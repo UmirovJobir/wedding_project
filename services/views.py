@@ -2,7 +2,7 @@
 from rest_framework.response import Response
 from django.http import HttpResponseNotAllowed
 
-from services.models import SystemInfoModel, RestoranModel, BookedDate, EvantModel, ServiceModel, TableModel, Menu, Order
+from services.models import SystemInfoModel, RestoranModel, BookedDate, EvantModel, ServiceModel, TableModel, MenuModel, Order
 
 from services.serializers.system_serializer import SystemSerializer
 from services.serializers.restoran_serializer import RestoranSerializer, EvantSerializer
@@ -62,11 +62,11 @@ class ServiceView(generics.ListAPIView):
 
 class MenuView(generics.ListAPIView):
     serializer_class = MenuSerializer 
-    queryset = Menu.objects.all()
+    queryset = MenuModel.objects.all()
 
     def get_queryset(self):
         events_id = self.request.query_params.get("id")
-        return Menu.objects.filter(event_id=events_id).all()
+        return MenuModel.objects.filter(event_id=events_id).all()
 
 
 class OrderView(generics.ListAPIView):
@@ -93,7 +93,7 @@ class OrderView(generics.ListAPIView):
             # menu = MenuModel.objects.get(pk=request.data.get("menu"))
             # gests_amount = request.data.get("gests_amount")
             services = ServiceModel.objects.filter(pk__in=request.data.get('service')).all()
-            menus = Menu.objects.filter(pk__in=request.data.get('menu')).all()
+            menus = MenuModel.objects.filter(pk__in=request.data.get('menu')).all()
             for service in services:
                 total_price += service.price
             for menu in menus:

@@ -28,7 +28,7 @@ class ServiceModel(models.Model):
     #     verbose_name_plural = "Услуги"
 
 
-class Menu(models.Model):
+class MenuModel(models.Model):
     event_id = models.ForeignKey(EvantModel, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
