@@ -22,7 +22,7 @@ class SystemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = SystemInfoModel
-        fields = ('id', 'title', 'type', 'description', 'files')
+        fields = ('id', 'title', 'description', 'files')
 
     def create(self, validated_data):
         files_data = self.context.get('view').request.FILES
