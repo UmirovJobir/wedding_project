@@ -60,13 +60,13 @@ class ServiceView(generics.ListAPIView):
     queryset = ServiceModel.objects.all()
     permission_classes = [IsAdminUser]
 
-# class MenuView(generics.ListAPIView):
-#     serializer_class = MenuSerializer 
-#     queryset = MenuModel.objects.all()
+class MenuView(generics.ListAPIView):
+    serializer_class = MenuSerializer 
+    queryset = MenuModel.objects.all()
 
-#     def get_queryset(self):
-#         events_id = self.request.query_params.get("id")
-#         return MenuModel.objects.filter(event_id=events_id).all()
+    def get_queryset(self):
+        events_id = self.request.query_params.get("id")
+        return MenuModel.objects.filter(event_id=events_id).all()
 
 
 class OrderView(generics.ListAPIView):
