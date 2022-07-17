@@ -2,7 +2,7 @@
 from rest_framework.response import Response
 from django.http import HttpResponseNotAllowed
 
-from services.models import SystemInfoModel, RestoranModel, BookedDate, EvantModel, ServiceModel, TableModel, MenuModel, Order
+from services.models import SystemInfoModel, RestoranModel, BookedDate, EvantModel, ServiceModel, TableModel, Menu, Order
 
 from services.serializers.system_serializer import SystemSerializer
 from services.serializers.restoran_serializer import RestoranSerializer, EvantSerializer
@@ -62,11 +62,11 @@ class ServiceView(generics.ListAPIView):
 
 class MenuView(generics.ListAPIView):
     serializer_class = MenuSerializer 
-    queryset = MenuModel.objects.all()
+    queryset = Menu.objects.all()
 
     def get_queryset(self):
         events_id = self.request.query_params.get("id")
-        return MenuModel.objects.filter(event_id=events_id).all()
+        return Menu.objects.filter(event_id=events_id).all()
 
 
 class OrderView(generics.ListAPIView):
