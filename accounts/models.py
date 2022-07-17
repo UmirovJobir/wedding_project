@@ -45,12 +45,12 @@ class UserModel(AbstractUser):
 
     )
     
-    # username = models.CharField(max_length=30)
+    username = models.CharField(max_length=30)
     number = models.CharField(max_length=9, unique=True, validators=[validate_length])
     city = models.CharField(max_length=50, choices=CITY)
     event_date = models.DateField(blank=True, null=True)
 
-    # USERNAME_FIELD = 'number'
+    USERNAME_FIELD = 'number'
 
     class Meta:
         ordering = ['-date_joined']
