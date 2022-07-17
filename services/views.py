@@ -93,7 +93,7 @@ class OrderView(generics.ListAPIView):
             # menu = MenuModel.objects.get(pk=request.data.get("menu"))
             # gests_amount = request.data.get("gests_amount")
             services = ServiceModel.objects.filter(pk__in=request.data.get('service')).all()
-            menus = MenuModel.objects.filter(pk__in=request.data.get('menu')).all()
+            menus = Menu.objects.filter(pk__in=request.data.get('menu')).all()
             for service in services:
                 total_price += service.price
             for menu in menus:
