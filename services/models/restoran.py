@@ -55,7 +55,6 @@ class RestoranModel(models.Model):
     city = models.CharField(max_length=30, choices=CITY)
     address = models.CharField(max_length=50)
     image = models.ImageField(upload_to='restoran/', blank=True, null=True)
-    file = models.FileField(upload_to='restoran/', blank=True, null=True)
     event_id = models.ManyToManyField(EvantModel, related_name='restoran_id')
 
     def save(self, *args, **kwargs):

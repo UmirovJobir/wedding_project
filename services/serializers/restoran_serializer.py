@@ -18,7 +18,7 @@ class RestoranSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RestoranModel
-        fields = ('id', 'event_id', 'restoran', 'city', 'address', 'booked_dates')
+        fields = ('id', 'event_id', 'restoran', 'city', 'address', 'image', 'booked_dates')
 
 
 class EvantSerializer(serializers.ModelSerializer):
