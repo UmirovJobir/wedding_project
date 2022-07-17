@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from services.models import ServiceModel, Category, EvantModel, MenuModel
+from services.models import ServiceModel, Category, EvantModel
 from services.serializers.restoran_serializer import EvantSerializer
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -22,9 +22,9 @@ class ServiceSerializer(serializers.ModelSerializer):
             Category.objects.create(category_type=category, **category_d)
         return category
     
-class MenuSerializer(serializers.ModelSerializer):
-    event_id = serializers.PrimaryKeyRelatedField(read_only=True)
+# class MenuSerializer(serializers.ModelSerializer):
+#     event_id = serializers.PrimaryKeyRelatedField(read_only=True)
     
-    class Meta:
-        model = MenuModel
-        fields = ('event_id', 'name', 'type', 'price', 'image')
+#     class Meta:
+#         model = MenuModel
+#         fields = ('event_id', 'name', 'type', 'price', 'image')
