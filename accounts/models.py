@@ -44,7 +44,7 @@ class UserModel(AbstractUser):
 
 
     )
-    
+
     username = models.CharField(max_length=30)
     number = models.CharField(max_length=9, unique=True, validators=[validate_length])
     city = models.CharField(max_length=50, choices=CITY)
