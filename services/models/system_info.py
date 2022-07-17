@@ -21,7 +21,7 @@ class SingletonModel(models.Model):
 
 class SystemInfoModel(SingletonModel):
     title = models.CharField(max_length=40)
-    type = models.CharField(max_length=40)
+    # type = models.CharField(max_length=40)
     description = models.TextField()
     
     def save(self, *args, **kwargs):
